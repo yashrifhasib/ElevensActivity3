@@ -82,7 +82,7 @@ public class Shuffler {
      */
     public static void selectionShuffle(int[] values) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-        for ( int i = 0; i < values.length; i++ ) {
+        for ( int i = values.length - 1; i >= 0; i-- ) {
             int rand = ( int ) ( Math.random() * values.length );
             int temp = values[ i ];
             values[ i ] = values [ rand ];

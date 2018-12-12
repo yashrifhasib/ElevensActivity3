@@ -17,7 +17,7 @@ public class Shuffler {
     public static void main(String[] args) {
         System.out.println("Results of " + SHUFFLE_COUNT +
                 " consecutive perfect shuffles:");
-        int[] values1 = {0, 1, 2, 3};
+        int[] values1 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         for (int j = 1; j <= SHUFFLE_COUNT; j++) {
             perfectShuffle(values1);
             System.out.print("  " + j + ":");
@@ -51,18 +51,33 @@ public class Shuffler {
      */
     public static void perfectShuffle(int[] values) {
         /* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-        int x = 0;
         int[] shuffled = new int[ values.length ];
-        for ( int i = 0; i < values.length / 2; i++ ) {
-            shuffled[ i ] = values[ x ];
-            x += 2;
+        if ( values.length % 2 == 0 ) {
+            int x = 0;
+            for ( int i = 0; i < values.length / 2; i++ ) {
+                shuffled[ i ] = values[ x ];
+                x += 2;
+            }
+
+            x = 1;
+            for ( int i = values.length / 2; i < values.length; i++ ) {
+                shuffled[ i ] = values[ x ];
+                x += 2;
+            }
+        }
+        else {
+            int x = 0;
+            for ( int i = 0; i < ( int )values.length / 2; i++ ) {
+                shuffled[ i ] = values[ x ];
+                x += 2;
+            }
+            x = 1;
+            for ( int i = (int)values.length / 2 + 1; i < values.length; i++ ) {
+                shuffled[ i ] = values[ x ];
+                x += 2;
+            }
         }
 
-        x = 1;
-        for ( int i = values.length / 2; i < values.length; i++ ) {
-            shuffled[ i ] = values[ x ];
-            x += 2;
-        }
 
         for ( int i = 0; i < shuffled.length; i++ ) {
             values[ i ] = shuffled[ i ];
